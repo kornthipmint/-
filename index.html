@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holographic Parabola Cyber-Lab | สื่อการเรียนรู้พาราโบลา ม.4</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#090d16',
+                            card: 'rgba(15, 23, 42, 0.65)',
+                            border: 'rgba(56, 189, 248, 0.2)',
+                            glow: '#38bdf8',
+                            accent: '#818cf8',
+                            neonPink: '#f43f5e',
+                            neonCyan: '#06b6d4',
+                            neonYellow: '#f59e0b',
+                            neonPurple: '#a855f7'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Sarabun & Orbitron -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #050811;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        .font-cyber {
+            font-family: 'Orbitron', sans-serif;
+        }
+        /* Holographic Glassmorphism */
+        .glass-panel {
+            background: rgba(13, 20, 38, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 15px rgba(56, 189, 248, 0.05);
+        }
+        .glass-panel-glow {
+            background: rgba(13, 20, 38, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(129, 140, 248, 0.4);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.15), inset 0 0 20px rgba(129, 140, 248, 0.1);
+        }
+        .hologram-btn {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(129, 140, 248, 0.2));
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hologram-btn:hover {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.4), rgba(129, 140, 248, 0.4));
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+            border-color: rgba(56, 189, 248, 0.8);
+            transform: translateY(-1px);
+        }
+        .hologram-btn.active {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.6), rgba(129, 140, 248, 0.6));
+            border-color: #38bdf8;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.7);
+        }
+        /* Neon Glow Text */
+        .neon-text-cyan {
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.6), 0 0 20px rgba(6, 182, 212, 0.4);
+        }
+        .neon-text-indigo {
+            text-shadow: 0 0 10px rgba(129, 140, 248, 0.6);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050811;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(56, 189, 248, 0.3);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(56, 189, 248, 0.6);
+        }
+        /* Grid background effect */
+        .cyber-grid {
+            background-image: 
+                linear-gradient(to right, rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="cyber-grid min-h-screen flex flex-col selection:bg-cyan-500 selection:text-white">
+
+    <!-- Ambient Hologram Glow Elements -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="fixed bottom-0 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <!-- Futuristic Header -->
+    <header class="glass-panel sticky top-0 z-50 px-4 md:px-8 py-3.5 border-b border-cyan-500/20">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3.5">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/30 to-indigo-500/30 border border-cyan-400/50 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.4)]">
+                    <i class="fa-solid fa-atom text-cyan-400 text-xl animate-pulse"></i>
+                </div>
+                <div>
+                    <h1 class="font-cyber text-lg md:text-xl font-bold tracking-wider text-white neon-text-cyan">PARABOLA LAB <span class="text-xs px-2 py-0.5 rounded bg-cyan-500/20 border border-cyan-400/40 text-cyan-300">v4.2</span></h1>
+                    <p class="text-xs text-slate-400">ระบบจำลองและสร้างแบบทดสอบพาราโบลา Holographic UI</p>
+                </div>
+            </div>
+            <!-- Navigation Holographic Tabs -->
+            <nav class="flex flex-wrap gap-1.5 p-1 rounded-xl bg-slate-900/60 border border-cyan-500/20 backdrop-blur-md">
+                <button onclick="switchTab('simulator')" id="btn-simulator" class="hologram-btn active px-4 py-2 rounded-lg text-xs md:text-sm font-medium text-cyan-300 flex items-center gap-2">
+                    <i class="fa-solid fa-sliders"></i> สำรวจกราฟ
+                </button>
+                <button onclick="switchTab('theory')" id="btn-theory" class="hologram-btn px-4 py-2 rounded-lg text-xs md:text-sm font-medium text-slate-300 hover:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-book-open"></i> สรุปสูตร
+                </button>
+                <button onclick="switchTab('quiz')" id="btn-quiz" class="hologram-btn px-4 py-2 rounded-lg text-xs md:text-sm font-medium text-slate-300 hover:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-clipboard-question"></i> ทำแบบทดสอบ
+                </button>
+                <button onclick="switchTab('creator')" id="btn-creator" class="hologram-btn px-4 py-2 rounded-lg text-xs md:text-sm font-medium text-slate-300 hover:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> สร้างข้อสอบเอง
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
+
+        <!-- TAB 1: SIMULATOR -->
+        <div id="tab-simulator" class="space-y-6">
+            <!-- Holographic Alert Bar -->
+            <div class="glass-panel p-4 rounded-2xl border-l-4 border-l-cyan-400 flex items-start gap-3.5 shadow-[0_0_20px_rgba(6,182,212,0.1)]">
+                <div class="text-cyan-400 text-lg mt-0.5"><i class="fa-solid fa-radar animate-spin"></i></div>
+                <div>
+                    <h3 class="font-bold text-white text-sm md:text-base tracking-wide">คำแนะนำระบบจำลองพาราโบลา</h3>
+                    <p class="text-xs md:text-sm text-slate-300 mt-0.5">เลื่อนปรับค่าตัวแปร <strong class="text-cyan-400">h, k และ c</strong> เพื่อวิเคราะห์ความเปลี่ยนแปลงของพาราโบลาในแบบเรียลไทม์ สมการมาตรฐาน <code class="bg-cyan-950/60 border border-cyan-500/30 px-2 py-0.5 rounded text-cyan-300 font-mono">(x - h)² = 4c(y - k)</code> พร้อมตรวจสอบองค์ประกอบจุดยอดและโฟกัส</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Left Panel: Controls & Metrics -->
+                <div class="lg:col-span-5 space-y-6">
+                    <!-- Sliders Hologram Card -->
+                    <div class="glass-panel p-5 rounded-2xl space-y-5">
+                        <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                            <h2 class="font-bold text-white flex items-center gap-2 font-cyber text-sm">
+                                <i class="fa-solid fa-sliders text-cyan-400"></i> ควบคุมตัวแปรพาราโบลา
+                            </h2>
+                            <button onclick="resetParameters()" class="text-xs text-cyan-400 hover:text-cyan-300 font-medium bg-cyan-950/60 hover:bg-cyan-900/60 border border-cyan-500/30 px-3 py-1 rounded-lg transition-all">
+                                <i class="fa-solid fa-rotate-right mr-1"></i> ค่าเริ่มต้น
+                            </button>
+                        </div>
+
+                        <!-- Slider h -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-slate-300 font-medium">ค่า <span class="text-cyan-400 font-bold font-cyber">h</span> (แกน X):</span>
+                                <span id="val-h" class="font-mono font-bold bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 px-2.5 py-0.5 rounded">0</span>
+                            </div>
+                            <input type="range" id="slider-h" min="-5" max="5" step="0.5" value="0" 
+                                class="w-full accent-cyan-400 bg-slate-800 rounded-lg h-2 cursor-pointer shadow-[0_0_10px_rgba(6,182,212,0.3)]">
+                            <div class="flex justify-between text-[10px] text-slate-500">
+                                <span>-5</span><span>0</span><span>+5</span>
+                            </div>
+                        </div>
+
+                        <!-- Slider k -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-slate-300 font-medium">ค่า <span class="text-cyan-400 font-bold font-cyber">k</span> (แกน Y):</span>
+                                <span id="val-k" class="font-mono font-bold bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 px-2.5 py-0.5 rounded">0</span>
+                            </div>
+                            <input type="range" id="slider-k" min="-5" max="5" step="0.5" value="0" 
+                                class="w-full accent-cyan-400 bg-slate-800 rounded-lg h-2 cursor-pointer shadow-[0_0_10px_rgba(6,182,212,0.3)]">
+                            <div class="flex justify-between text-[10px] text-slate-500">
+                                <span>-5</span><span>0</span><span>+5</span>
+                            </div>
+                        </div>
+
+                        <!-- Slider c -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-slate-300 font-medium">ค่า <span class="text-cyan-400 font-bold font-cyber">c</span> (ระยะโฟกัส):</span>
+                                <span id="val-c" class="font-mono font-bold bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 px-2.5 py-0.5 rounded">1</span>
+                            </div>
+                            <input type="range" id="slider-c" min="-4" max="4" step="0.5" value="1" 
+                                class="w-full accent-cyan-400 bg-slate-800 rounded-lg h-2 cursor-pointer shadow-[0_0_10px_rgba(6,182,212,0.3)]">
+                            <div class="flex justify-between text-[10px] text-slate-500">
+                                <span class="text-rose-400">-4 (คว่ำ)</span>
+                                <span>0</span>
+                                <span class="text-emerald-400">+4 (หงาย)</span>
+                            </div>
+                        </div>
+
+                        <!-- Status Badge -->
+                        <div id="parabola-type-badge" class="p-3 rounded-xl bg-slate-900/80 border border-cyan-500/30 flex items-center justify-between text-sm">
+                            <span class="text-slate-400 font-medium">สถานะกราฟ:</span>
+                            <span id="text-parabola-type" class="font-bold text-cyan-400 font-cyber text-xs">พาราโบลาหงาย (c > 0)</span>
+                        </div>
+                    </div>
+
+                    <!-- Math Metrics Hologram Card -->
+                    <div class="glass-panel p-5 rounded-2xl space-y-4">
+                        <h2 class="font-bold text-white flex items-center gap-2 font-cyber text-sm border-b border-cyan-500/20 pb-3">
+                            <i class="fa-solid fa-microchip text-cyan-400"></i> ผลลัพธ์สมการและองค์ประกอบ
+                        </h2>
+                        
+                        <div class="grid grid-cols-1 gap-2.5 text-sm">
+                            <div class="flex justify-between items-center bg-slate-900/60 p-2.5 rounded-xl border border-cyan-500/20">
+                                <span class="text-slate-400">สมการมาตรฐาน:</span>
+                                <span id="formula-display" class="font-mono font-bold text-cyan-300">x² = 4y</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-900/60 p-2.5 rounded-xl border border-cyan-500/20">
+                                <span class="text-slate-400">จุดยอด (Vertex):</span>
+                                <span id="val-vertex" class="font-mono font-semibold text-amber-400">(0, 0)</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-900/60 p-2.5 rounded-xl border border-cyan-500/20">
+                                <span class="text-slate-400">จุดโฟกัส (Focus):</span>
+                                <span id="val-focus" class="font-mono font-semibold text-rose-400">(0, 1)</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-900/60 p-2.5 rounded-xl border border-cyan-500/20">
+                                <span class="text-slate-400">เส้นไดเรกตริกซ์ (Directrix):</span>
+                                <span id="val-directrix" class="font-mono font-semibold text-emerald-400">y = -1</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-900/60 p-2.5 rounded-xl border border-cyan-500/20">
+                                <span class="text-slate-400">แกนสมมาตร (Axis):</span>
+                                <span id="val-axis" class="font-mono font-semibold text-purple-400">x = 0</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-900/60 p-2.5 rounded-xl border border-cyan-500/20">
+                                <span class="text-slate-400">ความยาวลาตัสเรกตั้ม:</span>
+                                <span id="val-latus-len" class="font-mono font-semibold text-cyan-300">4 หน่วย</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-900/60 p-2.5 rounded-xl border border-cyan-500/20">
+                                <span class="text-slate-400">จุดปลายลาตัสเรกตั้ม:</span>
+                                <span id="val-latus-pts" class="font-mono text-xs font-semibold text-cyan-300">(-2, 1), (2, 1)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Holographic Canvas Graph -->
+                <div class="lg:col-span-7 flex flex-col">
+                    <div class="glass-panel p-5 rounded-2xl flex flex-col h-full space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h2 class="font-bold text-white flex items-center gap-2 font-cyber text-sm">
+                                <i class="fa-solid fa-chart-line text-cyan-400"></i> เรดาร์กราฟพาราโบลา (Cartesian Grid)
+                            </h2>
+                            <div class="flex items-center gap-3 text-xs flex-wrap">
+                                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] inline-block"></span> กราฟ</span>
+                                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-rose-500 shadow-[0_0_8px_#f43f5e] inline-block"></span> โฟกัส</span>
+                                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-amber-500 shadow-[0_0_8px_#f59e0b] inline-block"></span> จุดยอด</span>
+                            </div>
+                        </div>
+
+                        <!-- Canvas Hologram Window -->
+                        <div class="relative flex-grow bg-[#050811] rounded-xl overflow-hidden border border-cyan-500/30 shadow-[inset_0_0_30px_rgba(6,182,212,0.15)] flex items-center justify-center min-h-[440px]">
+                            <canvas id="parabolaCanvas" class="w-full h-full cursor-crosshair"></canvas>
+                            <!-- Hologram Corner Accents -->
+                            <div class="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-cyan-400 pointer-events-none"></div>
+                            <div class="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-cyan-400 pointer-events-none"></div>
+                            <div class="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-cyan-400 pointer-events-none"></div>
+                            <div class="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-cyan-400 pointer-events-none"></div>
+                            
+                            <div class="absolute bottom-3 right-3 bg-slate-900/90 backdrop-blur-md text-cyan-300 text-xs px-3 py-1.5 rounded-lg border border-cyan-500/30 font-mono shadow-[0_0_10px_rgba(6,182,212,0.2)]">
+                                SCALE: 1 UNIT = 32PX
+                            </div>
+                        </div>
+
+                        <!-- Legend Bar -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-slate-300">
+                            <div class="glass-panel p-2.5 rounded-xl flex items-center gap-2 border-cyan-500/20">
+                                <div class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_6px_#f59e0b]"></div>
+                                <span>จุดยอด (Vertex)</span>
+                            </div>
+                            <div class="glass-panel p-2.5 rounded-xl flex items-center gap-2 border-cyan-500/20">
+                                <div class="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-[0_0_6px_#f43f5e]"></div>
+                                <span>จุดโฟกัส (Focus)</span>
+                            </div>
+                            <div class="glass-panel p-2.5 rounded-xl flex items-center gap-2 border-cyan-500/20">
+                                <div class="w-3 h-0.5 bg-emerald-400 shadow-[0_0_6px_#10b981]"></div>
+                                <span>ไดเรกตริกซ์</span>
+                            </div>
+                            <div class="glass-panel p-2.5 rounded-xl flex items-center gap-2 border-cyan-500/20">
+                                <div class="w-3 h-0.5 bg-purple-400 border-dashed border shadow-[0_0_6px_#a855f7]"></div>
+                                <span>ลาตัสเรกตั้ม</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: THEORY & FORMULAS -->
+        <div id="tab-theory" class="hidden space-y-6">
+            <div class="glass-panel p-6 md:p-8 rounded-2xl space-y-6">
+                <div class="border-b border-cyan-500/20 pb-4">
+                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3 font-cyber">
+                        <i class="fa-solid fa-book-bookmark text-cyan-400"></i> สรุปสูตรและองค์ประกอบพาราโบลา ม.4
+                    </h2>
+                    <p class="text-slate-300 text-sm mt-1">คลังความรู้ทางคณิตศาสตร์และสูตรมาตรฐานสำหรับคำนวณพาราโบลาที่มีแกนสมมาตรขนานกับแกน Y</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Standard Equation Hologram Box -->
+                    <div class="glass-panel-glow p-5 rounded-2xl space-y-3">
+                        <h3 class="font-bold text-cyan-300 text-base flex items-center gap-2 font-cyber">
+                            <i class="fa-solid fa-square-root-variable text-cyan-400"></i> สมการมาตรฐาน (Standard Form)
+                        </h3>
+                        <div class="bg-slate-900/90 p-4 rounded-xl border border-cyan-500/40 text-center font-mono text-lg font-bold text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+                            (x - h)² = 4c(y - k)
+                        </div>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            เมื่อ <code class="bg-cyan-950/80 px-1.5 py-0.5 rounded border border-cyan-500/30 text-cyan-300">(h, k)</code> คือพิกัดจุดยอด และ <code class="bg-cyan-950/80 px-1.5 py-0.5 rounded border border-cyan-500/30 text-cyan-300">c</code> คือระยะทางกำกับจากจุดยอดไปยังโฟกัส
+                        </p>
+                    </div>
+
+                    <!-- Parabola Types Box -->
+                    <div class="glass-panel p-5 rounded-2xl space-y-3 border-cyan-500/20">
+                        <h3 class="font-bold text-white text-base flex items-center gap-2 font-cyber">
+                            <i class="fa-solid fa-arrows-up-down text-cyan-400"></i> ลักษณะของกราฟพาราโบลา
+                        </h3>
+                        <ul class="space-y-2.5 text-sm text-slate-300">
+                            <li class="flex items-start gap-2.5 bg-slate-900/40 p-2.5 rounded-xl border border-cyan-500/10">
+                                <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold px-2 py-0.5 rounded text-xs font-cyber mt-0.5">c > 0</span>
+                                <span><strong>พาราโบลาหงาย:</strong> โค้งเปิดขึ้นด้านบน จุดยอดเป็นจุดต่ำสุดของกราฟ</span>
+                            </li>
+                            <li class="flex items-start gap-2.5 bg-slate-900/40 p-2.5 rounded-xl border border-cyan-500/10">
+                                <span class="bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold px-2 py-0.5 rounded text-xs font-cyber mt-0.5">c < 0</span>
+                                <span><strong>พาราโบลาคว่ำ:</strong> โค้งเปิดลงด้านล่าง จุดยอดเป็นจุดสูงสุดของกราฟ</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Elements Grid -->
+                <div class="space-y-4 pt-2">
+                    <h3 class="font-bold text-white text-base font-cyber">องค์ประกอบเชิงเรขาคณิต</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="glass-panel p-4 rounded-xl border-cyan-500/20 space-y-2">
+                            <div class="text-cyan-400 font-bold flex items-center gap-2 text-sm">
+                                <i class="fa-solid fa-location-crosshairs"></i> จุดยอด (Vertex)
+                            </div>
+                            <p class="text-xs text-slate-300">พิกัด <code class="font-mono text-cyan-300">(h, k)</code> จุดเปลี่ยนทิศทางความโค้ง</p>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl border-cyan-500/20 space-y-2">
+                            <div class="text-rose-400 font-bold flex items-center gap-2 text-sm">
+                                <i class="fa-solid fa-bullseye"></i> จุดโฟกัส (Focus)
+                            </div>
+                            <p class="text-xs text-slate-300">พิกัด <code class="font-mono text-cyan-300">(h, k + c)</code> อยู่ภายในส่วนโค้ง</p>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl border-cyan-500/20 space-y-2">
+                            <div class="text-emerald-400 font-bold flex items-center gap-2 text-sm">
+                                <i class="fa-solid fa-grip-lines"></i> เส้นไดเรกตริกซ์ (Directrix)
+                            </div>
+                            <p class="text-xs text-slate-300">เส้นตรง <code class="font-mono text-cyan-300">y = k - c</code> ตั้งฉากกับแกนสมมาตร</p>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl border-cyan-500/20 space-y-2">
+                            <div class="text-purple-400 font-bold flex items-center gap-2 text-sm">
+                                <i class="fa-solid fa-arrows-split-up-and-left"></i> แกนสมมาตร (Axis)
+                            </div>
+                            <p class="text-xs text-slate-300">เส้นตรง <code class="font-mono text-cyan-300">x = h</code> แบ่งครึ่งกราฟสมมาตร</p>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl border-cyan-500/20 space-y-2">
+                            <div class="text-amber-400 font-bold flex items-center gap-2 text-sm">
+                                <i class="fa-solid fa-ruler-horizontal"></i> ความยาวลาตัสเรกตั้ม
+                            </div>
+                            <p class="text-xs text-slate-300">ยาวเท่ากับ <code class="font-mono text-cyan-300">|4c|</code> หน่วย ผ่านจุดโฟกัส</p>
+                        </div>
+                        <div class="glass-panel p-4 rounded-xl border-cyan-500/20 space-y-2">
+                            <div class="text-cyan-300 font-bold flex items-center gap-2 text-sm">
+                                <i class="fa-solid fa-circle-dot"></i> จุดปลายลาตัสเรกตั้ม
+                            </div>
+                            <p class="text-xs text-slate-300">พิกัด <code class="font-mono text-cyan-300">(h ± 2|c|, k + c)</code></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: QUIZ MODE -->
+        <div id="tab-quiz" class="hidden space-y-6">
+            <div class="glass-panel p-6 md:p-8 rounded-2xl space-y-6 max-w-4xl mx-auto">
+                <div class="border-b border-cyan-500/20 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-2 font-cyber">
+                            <i class="fa-solid fa-clipboard-question text-cyan-400"></i> แบบทดสอบประเมินความรู้พาราโบลา
+                        </h2>
+                        <p class="text-slate-300 text-sm mt-1">ทดสอบทักษะการคำนวณจากคลังข้อสอบ (รวมข้อสอบที่คุณสร้างเองในระบบ)</p>
+                    </div>
+                    <div id="quiz-score-badge" class="hidden glass-panel-glow px-4 py-2 rounded-xl text-cyan-300 font-bold text-sm">
+                        คะแนนที่ทำได้: <span id="score-text">0</span> / <span id="total-score-text">0</span> คะแนน
+                    </div>
+                </div>
+
+                <!-- Quiz Questions Form -->
+                <form id="quiz-form" class="space-y-8" onsubmit="submitQuiz(event)">
+                    <div id="quiz-questions-container" class="space-y-6">
+                        <!-- Populated via JavaScript -->
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-4 border-t border-cyan-500/20">
+                        <button type="button" onclick="loadQuizQuestions()" class="text-cyan-400 hover:text-cyan-300 font-medium text-sm flex items-center gap-1.5">
+                            <i class="fa-solid fa-arrows-rotate"></i> โหลดชุดข้อสอบใหม่ / รีเซ็ต
+                        </button>
+                        <div class="flex gap-3">
+                            <button type="button" onclick="resetQuiz()" class="px-5 py-2.5 rounded-xl border border-slate-600 text-slate-300 font-medium hover:bg-slate-800 text-sm transition-all">
+                                <i class="fa-solid fa-rotate-right mr-2"></i> ล้างคำตอบ
+                            </button>
+                            <button type="submit" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-medium text-sm shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all">
+                                <i class="fa-solid fa-check mr-2"></i> ส่งตรวจคำตอบ
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- TAB 4: QUIZ CREATOR (สร้างข้อสอบเอง) -->
+        <div id="tab-creator" class="hidden space-y-6">
+            <div class="glass-panel p-6 md:p-8 rounded-2xl space-y-6 max-w-4xl mx-auto">
+                <div class="border-b border-cyan-500/20 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-2 font-cyber">
+                            <i class="fa-solid fa-screwdriver-wrench text-cyan-400"></i> คลังระบบสร้างข้อสอบ (Quiz Creator)
+                        </h2>
+                        <p class="text-slate-300 text-sm mt-1">เพิ่ม แก้ไข หรือลบข้อสอบของคุณเองได้แบบไดนามิก บันทึกอัตโนมัติในเบราว์เซอร์</p>
+                    </div>
+                    <button onclick="openQuestionModal()" class="px-4 py-2.5 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white rounded-xl text-sm font-medium shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all flex items-center gap-2 shrink-0">
+                        <i class="fa-solid fa-plus"></i> เพิ่มข้อสอบใหม่
+                    </button>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-white text-base font-cyber">รายการข้อสอบในระบบ (<span id="question-count">0</span> ข้อ)</h3>
+                        <button onclick="resetToDefaultQuestions()" class="text-xs text-rose-400 hover:text-rose-300 font-medium bg-rose-950/40 hover:bg-rose-900/50 border border-rose-500/30 px-3 py-1.5 rounded-lg transition-all">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> คืนค่าข้อสอบเริ่มต้น
+                        </button>
+                    </div>
+
+                    <div id="creator-questions-list" class="space-y-3">
+                        <!-- Populated via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modal for Adding/Editing Question -->
+    <div id="question-modal" class="fixed inset-0 bg-[#050811]/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-panel-glow rounded-2xl shadow-2xl max-w-2xl w-full p-6 space-y-5 max-h-[90vh] overflow-y-auto border border-cyan-500/40">
+            <div class="flex justify-between items-center border-b border-cyan-500/20 pb-3">
+                <h3 id="modal-title" class="font-bold text-lg text-white flex items-center gap-2 font-cyber">
+                    <i class="fa-solid fa-pen-to-square text-cyan-400"></i> เพิ่มคำถามใหม่
+                </h3>
+                <button onclick="closeQuestionModal()" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <form id="question-form" onsubmit="saveQuestion(event)" class="space-y-4">
+                <input type="hidden" id="edit-index" value="-1">
+
+                <div class="space-y-1.5">
+                    <label class="block text-sm font-medium text-slate-300">โจทย์คำถาม:</label>
+                    <textarea id="q-text" rows="3" required placeholder="เช่น พาราโบลาสมการ (x - 2)² = 8(y - 1) มีจุดยอดตรงกับข้อใด?" 
+                        class="w-full rounded-xl bg-slate-900/80 border border-cyan-500/30 p-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400"></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="space-y-1.5">
+                        <label class="block text-sm font-medium text-slate-300">ตัวเลือก A:</label>
+                        <input type="text" id="q-opt-a" required placeholder="เช่น (2, 1)" 
+                            class="w-full rounded-xl bg-slate-900/80 border border-cyan-500/30 p-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="block text-sm font-medium text-slate-300">ตัวเลือก B:</label>
+                        <input type="text" id="q-opt-b" required placeholder="เช่น (-2, -1)" 
+                            class="w-full rounded-xl bg-slate-900/80 border border-cyan-500/30 p-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="block text-sm font-medium text-slate-300">ตัวเลือก C:</label>
+                        <input type="text" id="q-opt-c" required placeholder="เช่น (1, 2)" 
+                            class="w-full rounded-xl bg-slate-900/80 border border-cyan-500/30 p-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="block text-sm font-medium text-slate-300">ตัวเลือก D:</label>
+                        <input type="text" id="q-opt-d" required placeholder="เช่น (-2, 1)" 
+                            class="w-full rounded-xl bg-slate-900/80 border border-cyan-500/30 p-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div class="space-y-1.5">
+                        <label class="block text-sm font-medium text-slate-300">คำตอบที่ถูกต้อง:</label>
+                        <select id="q-answer" class="w-full rounded-xl bg-slate-900 border border-cyan-500/30 p-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                            <option value="a">ตัวเลือก A</option>
+                            <option value="b">ตัวเลือก B</option>
+                            <option value="c">ตัวเลือก C</option>
+                            <option value="d">ตัวเลือก D</option>
+                        </select>
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="block text-sm font-medium text-slate-300">คำอธิบายเฉลย (Explanation):</label>
+                        <input type="text" id="q-explanation" placeholder="เช่น จากสมการมาตรฐานจะได้ h = 2, k = 1" 
+                            class="w-full rounded-xl bg-slate-900/80 border border-cyan-500/30 p-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-3 pt-4 border-t border-cyan-500/20">
+                    <button type="button" onclick="closeQuestionModal()" class="px-5 py-2.5 rounded-xl border border-slate-600 text-slate-300 font-medium hover:bg-slate-800 text-sm">
+                        ยกเลิก
+                    </button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-500 text-white font-medium hover:from-cyan-400 hover:to-indigo-400 text-sm shadow-[0_0_15px_rgba(6,182,212,0.4)]">
+                        บันทึกข้อสอบ
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="glass-panel border-t border-cyan-500/20 mt-12 py-6 text-center text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>Holographic Parabola Cyber-Lab | สื่อการเรียนรู้คณิตศาสตร์ ม.4 ดีไซน์ล้ำสมัยด้วย HTML5 Canvas & Tailwind CSS</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function switchTab(tabId) {
+            const tabs = ['simulator', 'theory', 'quiz', 'creator'];
+            tabs.forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                const btn = document.getElementById(`btn-${t}`);
+                if (t === tabId) {
+                    el.classList.remove('hidden');
+                    btn.classList.add('active');
+                    btn.classList.remove('text-slate-300');
+                    btn.classList.add('text-cyan-300');
+                } else {
+                    el.classList.add('hidden');
+                    btn.classList.remove('active');
+                    btn.classList.add('text-slate-300');
+                    btn.classList.remove('text-cyan-300');
+                }
+            });
+            if (tabId === 'simulator') {
+                resizeCanvas();
+                drawParabola();
+            } else if (tabId === 'quiz') {
+                loadQuizQuestions();
+            } else if (tabId === 'creator') {
+                renderCreatorQuestions();
+            }
+        }
+
+        const defaultQuestions = [
+            {
+                text: "พาราโบลาสมการ (x - 2)² = 8(y - 1) มีจุดยอด (Vertex) ตรงกับข้อใด?",
+                options: { a: "(2, 1)", b: "(-2, -1)", c: "(1, 2)", d: "(-2, 1)" },
+                answer: "a",
+                explanation: "จากสมการมาตรฐาน (x - h)² = 4c(y - k) จะได้ h = 2, k = 1 ดังนั้นจุดยอดคือ (2, 1)"
+            },
+            {
+                text: "จากสมการ x² = 12y จงหาพิกัดของจุดโฟกัส (Focus)",
+                options: { a: "(0, 3)", b: "(0, 6)", c: "(3, 0)", d: "(0, -3)" },
+                answer: "a",
+                explanation: "จาก x² = 12y จะได้ 4c = 12 ทำให้ c = 3 จุดโฟกัสคือ (0, c) = (0, 3)"
+            },
+            {
+                text: "เส้นไดเรกตริกซ์ของพาราโบลา x² = -16y คือเส้นตรงในข้อใด?",
+                options: { a: "y = -4", b: "y = 4", c: "x = 4", d: "y = -16" },
+                answer: "b",
+                explanation: "จาก x² = -16y จะได้ 4c = -16 ดังนั้น c = -4 สมการไดเรกตริกซ์คือ y = -c = -(-4) = 4"
+            }
+        ];
+
+        function getQuestions() {
+            const saved = localStorage.getItem('cyber_parabola_quiz_bank');
+            if (saved) {
+                try { return JSON.parse(saved); } catch (e) { return defaultQuestions; }
+            }
+            return defaultQuestions;
+        }
+
+        function saveQuestionsToStorage(questions) {
+            localStorage.setItem('cyber_parabola_quiz_bank', JSON.stringify(questions));
+        }
+
+        function resetToDefaultQuestions() {
+            if (confirm("ต้องการรีเซ็ตข้อสอบกลับเป็นค่าเริ่มต้นใช่หรือไม่?")) {
+                saveQuestionsToStorage(defaultQuestions);
+                renderCreatorQuestions();
+                alert("รีเซ็ตข้อสอบเรียบร้อยแล้ว");
+            }
+        }
+
+        function renderCreatorQuestions() {
+            const questions = getQuestions();
+            const container = document.getElementById('creator-questions-list');
+            document.getElementById('question-count').textContent = questions.length;
+
+            if (questions.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-10 glass-panel rounded-xl border-dashed border-cyan-500/30 text-slate-400">
+                        <i class="fa-solid fa-folder-open text-3xl mb-2 text-cyan-400/60"></i>
+                        <p>ยังไม่มีข้อสอบในระบบ กดปุ่ม "เพิ่มข้อสอบใหม่" ด้านบน</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            questions.forEach((q, idx) => {
+                html += `
+                    <div class="glass-panel p-4 rounded-xl space-y-3 border-cyan-500/20">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="flex items-start gap-3">
+                                <span class="bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 font-cyber font-bold w-6 h-6 rounded-lg flex items-center justify-center text-xs shrink-0 mt-0.5">${idx + 1}</span>
+                                <p class="font-semibold text-white text-sm">${q.text}</p>
+                            </div>
+                            <div class="flex items-center gap-1 shrink-0">
+                                <button onclick="editQuestion(${idx})" class="p-1.5 text-slate-400 hover:text-cyan-300 hover:bg-slate-800 rounded-lg transition-all" title="แก้ไข">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button onclick="deleteQuestion(${idx})" class="p-1.5 text-slate-400 hover:text-rose-400 hover:bg-slate-800 rounded-lg transition-all" title="ลบ">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pl-9">
+                            <div class="p-2 rounded bg-slate-900/60 border ${q.answer === 'a' ? 'border-emerald-500/50 bg-emerald-950/30 font-semibold text-emerald-300' : 'border-cyan-500/10 text-slate-300'}">ก. ${q.options.a}</div>
+                            <div class="p-2 rounded bg-slate-900/60 border ${q.answer === 'b' ? 'border-emerald-500/50 bg-emerald-950/30 font-semibold text-emerald-300' : 'border-cyan-500/10 text-slate-300'}">ข. ${q.options.b}</div>
+                            <div class="p-2 rounded bg-slate-900/60 border ${q.answer === 'c' ? 'border-emerald-500/50 bg-emerald-950/30 font-semibold text-emerald-300' : 'border-cyan-500/10 text-slate-300'}">ค. ${q.options.c}</div>
+                            <div class="p-2 rounded bg-slate-900/60 border ${q.answer === 'd' ? 'border-emerald-500/50 bg-emerald-950/30 font-semibold text-emerald-300' : 'border-cyan-500/10 text-slate-300'}">ง. ${q.options.d}</div>
+                        </div>
+                        ${q.explanation ? `<div class="text-xs text-cyan-300 bg-cyan-950/40 border border-cyan-500/20 p-2 rounded-lg ml-9 mt-1"><strong>คำอธิบาย:</strong> ${q.explanation}</div>` : ''}
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function openQuestionModal(editIdx = -1) {
+            const modal = document.getElementById('question-modal');
+            const title = document.getElementById('modal-title');
+            modal.classList.remove('hidden');
+
+            if (editIdx >= 0) {
+                title.innerHTML = `<i class="fa-solid fa-pen-to-square text-cyan-400"></i> แก้ไขคำถามข้อที่ ${editIdx + 1}`;
+                const questions = getQuestions();
+                const q = questions[editIdx];
+                document.getElementById('edit-index').value = editIdx;
+                document.getElementById('q-text').value = q.text;
+                document.getElementById('q-opt-a').value = q.options.a;
+                document.getElementById('q-opt-b').value = q.options.b;
+                document.getElementById('q-opt-c').value = q.options.c;
+                document.getElementById('q-opt-d').value = q.options.d;
+                document.getElementById('q-answer').value = q.answer;
+                document.getElementById('q-explanation').value = q.explanation || '';
+            } else {
+                title.innerHTML = `<i class="fa-solid fa-plus text-cyan-400"></i> เพิ่มคำถามใหม่`;
+                document.getElementById('question-form').reset();
+                document.getElementById('edit-index').value = -1;
+            }
+        }
+
+        function closeQuestionModal() {
+            document.getElementById('question-modal').classList.add('hidden');
+        }
+
+        function saveQuestion(event) {
+            event.preventDefault();
+            const editIdx = parseInt(document.getElementById('edit-index').value);
+            const newQ = {
+                text: document.getElementById('q-text').value,
+                options: {
+                    a: document.getElementById('q-opt-a').value,
+                    b: document.getElementById('q-opt-b').value,
+                    c: document.getElementById('q-opt-c').value,
+                    d: document.getElementById('q-opt-d').value
+                },
+                answer: document.getElementById('q-answer').value,
+                explanation: document.getElementById('q-explanation').value
+            };
+
+            let questions = getQuestions();
+            if (editIdx >= 0) {
+                questions[editIdx] = newQ;
+            } else {
+                questions.push(newQ);
+            }
+
+            saveQuestionsToStorage(questions);
+            closeQuestionModal();
+            renderCreatorQuestions();
+        }
+
+        function editQuestion(idx) { openQuestionModal(idx); }
+
+        function deleteQuestion(idx) {
+            if (confirm("ต้องการลบคำถามข้อนี้ใช่หรือไม่?")) {
+                let questions = getQuestions();
+                questions.splice(idx, 1);
+                saveQuestionsToStorage(questions);
+                renderCreatorQuestions();
+            }
+        }
+
+        function loadQuizQuestions() {
+            const questions = getQuestions();
+            const container = document.getElementById('quiz-questions-container');
+            document.getElementById('quiz-score-badge').classList.add('hidden');
+
+            if (questions.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-10 glass-panel rounded-xl text-slate-300 space-y-3">
+                        <i class="fa-solid fa-triangle-exclamation text-3xl text-amber-400"></i>
+                        <p>ยังไม่มีข้อสอบในระบบ กรุณาไปที่เมนู <strong>"สร้างข้อสอบเอง"</strong></p>
+                        <button onclick="switchTab('creator')" class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-indigo-500 text-white rounded-xl text-sm font-medium">ไปสร้างข้อสอบ</button>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            questions.forEach((q, idx) => {
+                html += `
+                    <div class="space-y-3 p-5 rounded-xl glass-panel border-cyan-500/20">
+                        <div class="flex items-start gap-3">
+                            <span class="bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 font-cyber font-bold w-7 h-7 rounded-lg flex items-center justify-center text-sm shrink-0">${idx + 1}</span>
+                            <div class="space-y-2.5 w-full">
+                                <p class="font-semibold text-white text-sm md:text-base">${q.text}</p>
+                                <div class="space-y-2 pt-1">
+                                    <label class="flex items-center gap-3 p-3 rounded-lg bg-slate-900/60 border border-cyan-500/20 cursor-pointer hover:border-cyan-400/50 transition-all">
+                                        <input type="radio" name="q_${idx}" value="a" class="accent-cyan-400">
+                                        <span class="text-sm font-mono text-slate-200">ก. ${q.options.a}</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3 rounded-lg bg-slate-900/60 border border-cyan-500/20 cursor-pointer hover:border-cyan-400/50 transition-all">
+                                        <input type="radio" name="q_${idx}" value="b" class="accent-cyan-400">
+                                        <span class="text-sm font-mono text-slate-200">ข. ${q.options.b}</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3 rounded-lg bg-slate-900/60 border border-cyan-500/20 cursor-pointer hover:border-cyan-400/50 transition-all">
+                                        <input type="radio" name="q_${idx}" value="c" class="accent-cyan-400">
+                                        <span class="text-sm font-mono text-slate-200">ค. ${q.options.c}</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-3 rounded-lg bg-slate-900/60 border border-cyan-500/20 cursor-pointer hover:border-cyan-400/50 transition-all">
+                                        <input type="radio" name="q_${idx}" value="d" class="accent-cyan-400">
+                                        <span class="text-sm font-mono text-slate-200">ง. ${q.options.d}</span>
+                                    </label>
+                                </div>
+                                <div id="feedback-q_${idx}" class="hidden mt-2 p-3 rounded-lg text-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function submitQuiz(event) {
+            event.preventDefault();
+            const questions = getQuestions();
+            if (questions.length === 0) return;
+
+            let score = 0;
+            const total = questions.length;
+
+            questions.forEach((q, idx) => {
+                const radios = document.getElementsByName(`q_${idx}`);
+                let selectedVal = null;
+                radios.forEach(r => { if (r.checked) selectedVal = r.value; });
+
+                const feedbackEl = document.getElementById(`feedback-q_${idx}`);
+                feedbackEl.classList.remove('hidden');
+
+                if (selectedVal === q.answer) {
+                    score++;
+                    feedbackEl.className = "mt-2 p-3 rounded-lg text-sm bg-emerald-950/60 text-emerald-300 border border-emerald-500/40";
+                    feedbackEl.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 mr-1.5"></i> <strong>ถูกต้อง!</strong> ${q.explanation ? q.explanation : ''}`;
+                } else if (!selectedVal) {
+                    feedbackEl.className = "mt-2 p-3 rounded-lg text-sm bg-amber-950/60 text-amber-300 border border-amber-500/40";
+                    feedbackEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-amber-400 mr-1.5"></i> <strong>ยังไม่ได้ตอบ</strong> เฉลยที่ถูกต้องคือตัวเลือก <strong>${q.answer.toUpperCase()}</strong> (${q.options[q.answer]})`;
+                } else {
+                    feedbackEl.className = "mt-2 p-3 rounded-lg text-sm bg-rose-950/60 text-rose-300 border border-rose-500/40";
+                    feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-400 mr-1.5"></i> <strong>ยังไม่ถูกต้อง</strong> เฉลยคือตัวเลือก <strong>${q.answer.toUpperCase()}</strong> (${q.options[q.answer]}). ${q.explanation ? q.explanation : ''}`;
+                }
+            });
+
+            const scoreBadge = document.getElementById('quiz-score-badge');
+            document.getElementById('score-text').textContent = score;
+            document.getElementById('total-score-text').textContent = total;
+            scoreBadge.classList.remove('hidden');
+            scoreBadge.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetQuiz() { loadQuizQuestions(); }
+
+        let h = 0, k = 0, c = 1;
+
+        const sliderH = document.getElementById('slider-h');
+        const sliderK = document.getElementById('slider-k');
+        const sliderC = document.getElementById('slider-c');
+
+        const valH = document.getElementById('val-h');
+        const valK = document.getElementById('val-k');
+        const valC = document.getElementById('val-c');
+
+        const valVertex = document.getElementById('val-vertex');
+        const valFocus = document.getElementById('val-focus');
+        const valDirectrix = document.getElementById('val-directrix');
+        const valAxis = document.getElementById('val-axis');
+        const valLatusLen = document.getElementById('val-latus-len');
+        const valLatusPts = document.getElementById('val-latus-pts');
+        const formulaDisplay = document.getElementById('formula-display');
+        const textParabolaType = document.getElementById('text-parabola-type');
+
+        const canvas = document.getElementById('parabolaCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resetParameters() {
+            sliderH.value = 0;
+            sliderK.value = 0;
+            sliderC.value = 1;
+            updateValues();
+        }
+
+        function updateValues() {
+            h = parseFloat(sliderH.value);
+            k = parseFloat(sliderK.value);
+            c = parseFloat(sliderC.value);
+
+            if (c === 0) { c = 0.5; sliderC.value = 0.5; }
+
+            valH.textContent = h;
+            valK.textContent = k;
+            valC.textContent = c;
+
+            const focusY = k + c;
+            const directrixY = k - c;
+            const latusLength = Math.abs(4 * c);
+
+            valVertex.textContent = `(${h}, ${k})`;
+            valFocus.textContent = `(${h}, ${focusY.toFixed(1)})`;
+            valDirectrix.textContent = `y = ${directrixY.toFixed(1)}`;
+            valAxis.textContent = `x = ${h}`;
+            valLatusLen.textContent = `${latusLength.toFixed(1)} หน่วย`;
+
+            const lLeftX = h - 2 * Math.abs(c);
+            const lRightX = h + 2 * Math.abs(c);
+            valLatusPts.textContent = `(${lLeftX.toFixed(1)}, ${focusY.toFixed(1)}), (${lRightX.toFixed(1)}, ${focusY.toFixed(1)})`;
+
+            let termX = h === 0 ? "x²" : (h > 0 ? `(x - ${h})²` : `(x + ${Math.abs(h)})²`);
+            let fourC = 4 * c;
+            let termY = k === 0 ? `${fourC}y` : (k > 0 ? `${fourC}(y - ${k})` : `${fourC}(y + ${Math.abs(k)})`);
+            formulaDisplay.textContent = `${termX} = ${termY}`;
+
+            if (c > 0) {
+                textParabolaType.textContent = "พาราโบลาหงาย (c > 0)";
+                textParabolaType.className = "font-bold text-emerald-400 font-cyber text-xs";
+            } else {
+                textParabolaType.textContent = "พาราโบลาคว่ำ (c < 0)";
+                textParabolaType.className = "font-bold text-rose-400 font-cyber text-xs";
+            }
+
+            drawParabola();
+        }
+
+        sliderH.addEventListener('input', updateValues);
+        sliderK.addEventListener('input', updateValues);
+        sliderC.addEventListener('input', updateValues);
+
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+        }
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            drawParabola();
+        });
+
+        function drawParabola() {
+            if (!ctx) return;
+            const width = canvas.width;
+            const height = canvas.height;
+
+            ctx.clearRect(0, 0, width, height);
+
+            const scale = 32; 
+            const centerX = width / 2;
+            const centerY = height / 2;
+
+            function toPx(x, y) {
+                return {
+                    x: centerX + x * scale,
+                    y: centerY - y * scale
+                };
+            }
+
+            // Grid lines
+            ctx.strokeStyle = 'rgba(56, 189, 248, 0.08)';
+            ctx.lineWidth = 1;
+
+            for (let x = -Math.floor(centerX / scale); x <= Math.floor(centerX / scale); x++) {
+                const pt = toPx(x, 0);
+                ctx.beginPath();
+                ctx.moveTo(pt.x, 0);
+                ctx.lineTo(pt.x, height);
+                ctx.stroke();
+            }
+
+            for (let y = -Math.floor(centerY / scale); y <= Math.floor(centerY / scale); y++) {
+                const pt = toPx(0, y);
+                ctx.beginPath();
+                ctx.moveTo(0, pt.y);
+                ctx.lineTo(width, pt.y);
+                ctx.stroke();
+            }
+
+            // Main Axes
+            ctx.strokeStyle = 'rgba(56, 189, 248, 0.3)';
+            ctx.lineWidth = 2;
+            
+            const originY = toPx(0, 0).y;
+            ctx.beginPath();
+            ctx.moveTo(0, originY);
+            ctx.lineTo(width, originY);
+            ctx.stroke();
+
+            const originX = toPx(0, 0).x;
+            ctx.beginPath();
+            ctx.moveTo(originX, 0);
+            ctx.lineTo(originX, height);
+            ctx.stroke();
+
+            // Axis Numbers
+            ctx.fillStyle = '#64748b';
+            ctx.font = '10px Sarabun, sans-serif';
+            ctx.textAlign = 'center';
+            for (let x = -10; x <= 10; x += 2) {
+                if (x !== 0) {
+                    const pt = toPx(x, 0);
+                    if (pt.x > 0 && pt.x < width) ctx.fillText(x, pt.x, originY + 15);
+                }
+            }
+            ctx.textAlign = 'right';
+            for (let y = -10; y <= 10; y += 2) {
+                if (y !== 0) {
+                    const pt = toPx(0, y);
+                    if (pt.y > 0 && pt.y < height) ctx.fillText(y, originX - 8, pt.y + 4);
+                }
+            }
+
+            // Axis of Symmetry (Purple dashed)
+            const axisPt1 = toPx(h, -15);
+            const axisPt2 = toPx(h, 15);
+            ctx.strokeStyle = '#a855f7';
+            ctx.setLineDash([4, 4]);
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(axisPt1.x, axisPt1.y);
+            ctx.lineTo(axisPt2.x, axisPt2.y);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Directrix (Emerald)
+            const directrixYVal = k - c;
+            const dirPt1 = toPx(-15, directrixYVal);
+            const dirPt2 = toPx(15, directrixYVal);
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(dirPt1.x, dirPt1.y);
+            ctx.lineTo(dirPt2.x, dirPt2.y);
+            ctx.stroke();
+
+            // Latus Rectum (Amber dashed)
+            const focusYVal = k + c;
+            const lLeft = toPx(h - 2 * Math.abs(c), focusYVal);
+            const lRight = toPx(h + 2 * Math.abs(c), focusYVal);
+            ctx.strokeStyle = '#f59e0b';
+            ctx.setLineDash([2, 2]);
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(lLeft.x, lLeft.y);
+            ctx.lineTo(lRight.x, lRight.y);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Parabola Neon Curve (Cyan / Indigo)
+            ctx.strokeStyle = '#22d3ee';
+            ctx.shadowColor = '#06b6d4';
+            ctx.shadowBlur = 12;
+            ctx.lineWidth = 3.5;
+            ctx.beginPath();
+            let first = true;
+            for (let px = 0; px <= width; px += 2) {
+                const mathX = (px - centerX) / scale;
+                const mathY = k + Math.pow(mathX - h, 2) / (4 * c);
+                const pCanvas = toPx(mathX, mathY);
+
+                if (pCanvas.y >= -50 && pCanvas.y <= height + 50) {
+                    if (first) { ctx.moveTo(pCanvas.x, pCanvas.y); first = false; }
+                    else { ctx.lineTo(pCanvas.x, pCanvas.y); }
+                }
+            }
+            ctx.stroke();
+            ctx.shadowBlur = 0; // Reset shadow
+
+            // Vertex Point (Amber glow)
+            const vertexPt = toPx(h, k);
+            ctx.fillStyle = '#f59e0b';
+            ctx.beginPath();
+            ctx.arc(vertexPt.x, vertexPt.y, 6, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Focus Point (Rose glow)
+            const focusPt = toPx(h, focusYVal);
+            ctx.fillStyle = '#f43f5e';
+            ctx.beginPath();
+            ctx.arc(focusPt.x, focusPt.y, 6, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Holographic Labels
+            ctx.font = 'bold 11px Orbitron, sans-serif';
+            ctx.fillStyle = '#fbbf24';
+            ctx.fillText(`Vertex (${h}, ${k})`, vertexPt.x + 15, vertexPt.y - 12);
+
+            ctx.fillStyle = '#f43f5e';
+            ctx.fillText(`Focus (${h}, ${focusYVal.toFixed(1)})`, focusPt.x + 15, focusPt.y + 5);
+
+            ctx.fillStyle = '#10b981';
+            ctx.font = 'bold 10px Sarabun, sans-serif';
+            ctx.fillText(`Directrix y = ${directrixYVal.toFixed(1)}`, 70, dirPt1.y - 8);
+        }
+
+        window.onload = function() {
+            resizeCanvas();
+            updateValues();
+        };
+    </script>
+</body>
+</html>
